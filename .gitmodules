@@ -1,3 +1,6 @@
 [submodule "brannigans-chess-backend"]
 	path = brannigans-chess-backend
 	url = git@github.com:seamuslowry/brannigans-chess-backend.git
+[submodule "brannigans-chess-frontend"]
+	path = brannigans-chess-frontend
+	url = git@github.com:seamuslowry/brannigans-chess-frontend.git
