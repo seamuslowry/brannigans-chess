@@ -32,8 +32,6 @@ services:
         build: 
             context: ./brannigans-chess-frontend
             dockerfile: ./Dockerfile
-        environment:
-            BRANNIGANS_CHESS_SERVICE_URL: backend
         ports:
             - 3000:80
         expose: 
