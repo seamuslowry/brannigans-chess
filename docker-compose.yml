@@ -1,39 +1,40 @@
 version: "3"
 
 volumes:
-    database-data:
+  database-data:
 
 services:
-    database:
-        image: postgres
-        volumes:
-            - database-data:/var/lib/postgresql/data
-        environment: 
-            POSTGRES_PASSWORD: postgres
-            POSTGRES_USER: brannigan
-            POSTGRES_DB: brannigan
-        ports:
-            - 5432:5432
-    
-    backend:
-        build: 
-            context: ./brannigans-chess-backend
-            dockerfile: ./Dockerfile
-        environment:
-            BRANNIGANS_CHESS_DB_URL: database
-            CHESS_ACCESS_CONTROL_ALLOW_ORIGIN: http://localhost:3000
-        depends_on: 
-            - database
-        ports:
-            - 8080:8080
-        expose: 
-            - 8080
+  database:
+    image: postgres
+    volumes:
+      - database-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: brannigan
+      POSTGRES_DB: brannigan
+    ports:
+      - 5432:5432
 
-    frontend:
-        build: 
-            context: ./brannigans-chess-frontend
-            dockerfile: ./Dockerfile
-        ports:
-            - 3000:80
-        expose: 
-            - 80
+  backend:
+    build:
+      context: ./brannigans-chess-backend
+      dockerfile: ./Dockerfile
+    environment:
+      BRANNIGANS_CHESS_DB_URL: database
+      CHESS_ACCESS_CONTROL_ALLOW_ORIGIN: http://localhost:3000
+      BRANNIGANS_CHESS_DB_NAME: brannigan
+    depends_on:
+      - database
+    ports:
+      - 8080:8080
+    expose:
+      - 8080
+
+  frontend:
+    build:
+      context: ./brannigans-chess-frontend
+      dockerfile: ./Dockerfile
+    ports:
+      - 3000:80
+    expose:
+      - 80
