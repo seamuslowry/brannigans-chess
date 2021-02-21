@@ -5,7 +5,7 @@
 ## Running the Project
 - `docker-compose build`
 - `docker-compose up`
-- You should now see the service exposed on `localhost:8080`. Swagger for testing can be used on `localhost:8080/swagger-ui.html`
+- You should now see the service exposed on `localhost:8080`. Swagger for testing can be used on `localhost:8080/swagger-ui/index.html`
 - The frontend is reachable at `localhost:3000`
 
 ## Goal
